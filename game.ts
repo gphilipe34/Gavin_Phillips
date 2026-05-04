@@ -34,15 +34,18 @@ function updateStats(result: "win" | "lose" | "tie") {
   else draws++;
 
   const total = wins + losses + draws;
-  const winPercent = total === 0 ? "N/A" : ((wins / total) * 100).toFixed(1) + "%";
+  const percent = total === 0 ? "N/A" : ((wins / total) * 100).toFixed(1) + "%";
 
   document.getElementById("wins")!.textContent = wins.toString();
   document.getElementById("losses")!.textContent = losses.toString();
   document.getElementById("draws")!.textContent = draws.toString();
-  document.getElementById("winPercent")!.textContent = winPercent;
+  document.getElementById("winPercent")!.textContent = percent;
 }
 
 function startGame(playerMove: RPS) {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(b => (b as HTMLButtonElement).disabled = true);
+
   const countdown = document.getElementById("countdown")!;
   let count = 3;
 
@@ -57,6 +60,7 @@ function startGame(playerMove: RPS) {
     else {
       clearInterval(interval);
       playRound(playerMove);
+      buttons.forEach(b => (b as HTMLButtonElement).disabled = false);
     }
   }, 500);
 }
@@ -65,15 +69,13 @@ function playRound(playerMove: RPS) {
   const computerMove = getComputerMove();
   const result = determineWinner(playerMove, computerMove);
 
-const playerImg = document.getElementById("playerImg") as HTMLImageElement;
-const computerImg = document.getElementById("computerImg") as HTMLImageElement;
+  const playerImg = document.getElementById("playerImg") as HTMLImageElement;
+  const computerImg = document.getElementById("computerImg") as HTMLImageElement;
+  const resultText = document.getElementById("result")!;
 
-if (playerImg && computerImg) {
   // Reset animation
   playerImg.classList.remove("pop");
   computerImg.classList.remove("pop");
-
-  // Force reflow (this is the magic trick 🪄)
   void playerImg.offsetWidth;
   void computerImg.offsetWidth;
 
@@ -84,10 +86,8 @@ if (playerImg && computerImg) {
   // Trigger animation
   playerImg.classList.add("pop");
   computerImg.classList.add("pop");
-}
 
-const resultText = document.getElementById("result")!;
-resultText.className = "";
+  resultText.className = "";
 
   if (result === "win") {
     resultText.textContent = "You win!";
