@@ -1,66 +1,87 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors</title>
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+    }
 
-  
-  
-  
+    .container {
+      margin-top: 50px;
+    }
 
+    .choices button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: white;
+      transition: transform 0.1s;
+    }
 
+    .choices button:hover {
+      transform: scale(1.1);
+    }
+
+    .images img {
+      width: 120px;
+      margin: 20px;
+    }
+
+    .pop {
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); }
+      100% { transform: scale(1); }
+    }
+
+    .win { color: green; }
+    .lose { color: red; }
+    .tie { color: gray; }
+  </style>
+</head>
+
+<body>
 
 <div class="container">
   <h1>Rock Paper Scissors</h1>
 
-  
   <div class="stats">
-    <p>W: <span>0</span> 
-       D: <span>0</span> 
-       L: <span>0</span></p>
-    <p>Win%: <span>N/A</span></p>
+    <p>
+      W: <span id="wins">0</span>
+      D: <span id="draws">0</span>
+      L: <span id="losses">0</span>
+    </p>
+    <p>Win%: <span id="winPercent">N/A</span></p>
   </div>
 
-  
-  <div>Play!</div>
+  <div id="countdown">Play!</div>
 
-  
   <div class="images">
-    <img/>
-    <img/>
+    <img id="playerImg" src="" alt="Player choice">
+    <img id="computerImg" src="" alt="Computer choice">
   </div>
 
-  
   <div class="choices">
-    ✊ Rock
-    ✋ Paper
-    ✌️ Scissors
+    <button onclick="startGame('rock')">✊ Rock</button>
+    <button onclick="startGame('paper')">✋ Paper</button>
+    <button onclick="startGame('scissors')">✌️ Scissors</button>
   </div>
 
-  
-  <h2></h2>
+  <h2 id="result"></h2>
 </div>
 
+<script src="game.js"></script>
 
-
-<script type="module" src="https://s.brightspace.com/lib/bsi/2026.4.226/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-					if (document.querySelector('math, .d2l-element, .d2l-cplus-layout') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
-						document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
-							elm.setAttribute('style', 'display: block; height: 0.5rem;');
-						});
-
-						document.querySelectorAll('math mmultiscripts > none').forEach(elm => {
-							const mrow = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
-							elm.replaceWith(mrow);
-						});
-
-						window.D2L.MathJax.loadMathJax({
-							outputScale: 1.5,
-							renderLatex: false,
-							enableMML3Support: false
-						});
-					}
-				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2026.4.226/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-					document.querySelectorAll('.d2l-code').forEach(code => {
-						window.D2L.Prism.formatCodeElement(code, true);
-					});
-				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2026.4.226/unbundled/embeds.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
-					window.D2L.EmbedRenderer.renderEmbeds(document.body);
-				});</script></body></html>
+</body>
+</html>
