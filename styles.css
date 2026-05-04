@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: Arial;
-  background: #0f172a;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
   color: white;
   display: flex;
   justify-content: center;
@@ -21,6 +21,7 @@ body {
 #countdown {
   font-size: 26px;
   margin: 10px;
+  height: 30px;
 }
 
 .images {
@@ -33,36 +34,45 @@ body {
 .images img {
   width: 120px;
   height: 120px;
-  transform: scale(1);
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+  transform: scale(1); /* FIX: stays visible */
 }
 
+/* Pop animation */
 .pop {
   animation: pop 0.25s ease;
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(0);
-  }
-  60% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
 button {
   margin: 10px;
   padding: 10px 20px;
   font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #334155;
+  color: white;
   cursor: pointer;
 }
 
-.win { color: lime;
-  color: lime;
-  text-shadow: 0 0 10px lime;
+button:hover {
+  background: #475569;
 }
-.lose { color: red; }
-.tie { color: gold; }
+
+button:disabled {
+  opacity: 0.5;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.win { color: #22c55e; }
+.lose { color: #ef4444; }
+.tie { color: #eab308; }
