@@ -1,75 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Rock Paper Scissors</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f4f4f4;
-    }
-
-    .container {
-      margin-top: 50px;
-    }
-
-    .choices button {
-      font-size: 18px;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: none;
-      background: #333;
-      color: white;
-      transition: transform 0.1s;
-    }
-
-    .choices button:hover {
-      transform: scale(1.1);
-    }
-
-    .images img {
-      width: 120px;
-      margin: 20px;
-    }
-
-    .pop {
-      animation: pop 0.3s ease;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0.8); }
-      100% { transform: scale(1); }
-    }
-
-    .win { color: green; }
-    .lose { color: red; }
-    .tie { color: gray; }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
 <div class="container">
-  <h1>Rock Paper Scissors</h1>
+  <h1>✊ Rock ✋ Paper ✌️ Scissors</h1>
 
   <div class="stats">
-    <p>
-      W: <span id="wins">0</span>
-      D: <span id="draws">0</span>
-      L: <span id="losses">0</span>
-    </p>
+    <p>W: <span id="wins">0</span> 
+       D: <span id="draws">0</span> 
+       L: <span id="losses">0</span></p>
     <p>Win%: <span id="winPercent">N/A</span></p>
   </div>
 
   <div id="countdown">Play!</div>
 
   <div class="images">
-    <img id="playerImg" src="" alt="Player choice">
-    <img id="computerImg" src="" alt="Computer choice">
+    <img id="playerImg" alt="Player choice"/>
+    <img id="computerImg" alt="Computer choice"/>
   </div>
 
   <div class="choices">
@@ -78,10 +30,10 @@
     <button onclick="startGame('scissors')">✌️ Scissors</button>
   </div>
 
+ 
   <h2 id="result"></h2>
 </div>
 
 <script src="game.js"></script>
-
 </body>
 </html>
