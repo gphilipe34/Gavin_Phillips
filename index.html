@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIC - TAC - TOE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>TIC-TAC-TOE</h1>
+    <p class="subtitle"> /p>
+  </header>
+
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="vs-ai-btn" onclick="setMode('ai')">vs Computer</button>
+    <button class="mode-btn" id="vs-human-btn" onclick="setMode('human')">2 Players</button>
+  </div>
+
+  <div class="scoreboard">
+    <div class="score-item x-score" id="x-score-box">
+      <div class="score-label" id="x-label">You (X)</div>
+      <div class="score-value" id="x-score">0</div>
+    </div>
+    <div class="score-item tie-score">
+      <div class="score-label">Ties</div>
+      <div class="score-value" id="tie-score">0</div>
+    </div>
+    <div class="score-item o-score" id="o-score-box">
+      <div class="score-label" id="o-label">CPU (O)</div>
+      <div class="score-value" id="o-score">0</div>
+    </div>
+  </div>
+
+  <div class="turn-indicator" id="turn-indicator">
+    <span class="x-text">X</span>'s turn
+  </div>
+
+  <div class="thinking" id="thinking">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    CPU thinking
+  </div>
+
+  <div class="board" id="board">
+    <div class="cell" onclick="handleClick(0)"><span class="cell-mark" id="c0"></span></div>
+    <div class="cell" onclick="handleClick(1)"><span class="cell-mark" id="c1"></span></div>
+    <div class="cell" onclick="handleClick(2)"><span class="cell-mark" id="c2"></span></div>
+    <div class="cell" onclick="handleClick(3)"><span class="cell-mark" id="c3"></span></div>
+    <div class="cell" onclick="handleClick(4)"><span class="cell-mark" id="c4"></span></div>
+    <div class="cell" onclick="handleClick(5)"><span class="cell-mark" id="c5"></span></div>
+    <div class="cell" onclick="handleClick(6)"><span class="cell-mark" id="c6"></span></div>
+    <div class="cell" onclick="handleClick(7)"><span class="cell-mark" id="c7"></span></div>
+    <div class="cell" onclick="handleClick(8)"><span class="cell-mark" id="c8"></span></div>
+  </div>
+
+  <div class="outcome">
+    <div class="outcome-msg" id="outcome-msg"></div>
+    <div class="outcome-sub" id="outcome-sub"></div>
+  </div>
+
+  <button class="new-game-btn" onclick="newGame()"><span>New Game</span></button>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
